@@ -1,6 +1,6 @@
 {
   "name": "cortex-plugin-jira",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Create/update issues, sprint planning, backlog grooming",
   "kind": "esm",
   "entryPoint": "mod.ts",
@@ -17,36 +17,99 @@
       "name": "jira_create_issue",
       "description": "Create a new Jira issue",
       "params": [
-        { "name": "project_key", "type": "string", "description": "Project key (e.g. PROJ)", "required": true },
-        { "name": "summary", "type": "string", "description": "Issue summary/title", "required": true },
-        { "name": "description", "type": "string", "description": "Issue description", "required": false },
-        { "name": "issue_type", "type": "string", "description": "Type of issue", "required": false, "enum": ["bug", "task", "story", "epic"] },
-        { "name": "priority", "type": "string", "description": "Issue priority", "required": false, "enum": ["low", "medium", "high", "critical"] },
-        { "name": "assignee", "type": "string", "description": "Assignee username or account ID", "required": false },
-        { "name": "labels", "type": "string", "description": "Comma-separated list of labels", "required": false }
+        {
+          "name": "project_key",
+          "type": "string",
+          "description": "Project key (e.g. PROJ)",
+          "required": true
+        },
+        {
+          "name": "summary",
+          "type": "string",
+          "description": "Issue summary/title",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "Issue description",
+          "required": false
+        },
+        {
+          "name": "issue_type",
+          "type": "string",
+          "description": "Type of issue",
+          "required": false,
+          "enum": ["bug", "task", "story", "epic"]
+        },
+        {
+          "name": "priority",
+          "type": "string",
+          "description": "Issue priority",
+          "required": false,
+          "enum": ["low", "medium", "high", "critical"]
+        },
+        {
+          "name": "assignee",
+          "type": "string",
+          "description": "Assignee username or account ID",
+          "required": false
+        },
+        {
+          "name": "labels",
+          "type": "string",
+          "description": "Comma-separated list of labels",
+          "required": false
+        }
       ]
     },
     {
       "name": "jira_get_issue",
       "description": "Get details of a Jira issue",
       "params": [
-        { "name": "issue_key", "type": "string", "description": "Issue key (e.g. PROJ-123)", "required": true }
+        {
+          "name": "issue_key",
+          "type": "string",
+          "description": "Issue key (e.g. PROJ-123)",
+          "required": true
+        }
       ]
     },
     {
       "name": "jira_search",
       "description": "Search issues using JQL",
       "params": [
-        { "name": "jql", "type": "string", "description": "Jira Query Language string", "required": true },
-        { "name": "max_results", "type": "number", "description": "Maximum results to return", "required": false, "default": 20 }
+        {
+          "name": "jql",
+          "type": "string",
+          "description": "Jira Query Language string",
+          "required": true
+        },
+        {
+          "name": "max_results",
+          "type": "number",
+          "description": "Maximum results to return",
+          "required": false,
+          "default": 20
+        }
       ]
     },
     {
       "name": "jira_update_issue",
       "description": "Update an existing Jira issue",
       "params": [
-        { "name": "issue_key", "type": "string", "description": "Issue key (e.g. PROJ-123)", "required": true },
-        { "name": "updates", "type": "string", "description": "JSON object of fields to update", "required": true }
+        {
+          "name": "issue_key",
+          "type": "string",
+          "description": "Issue key (e.g. PROJ-123)",
+          "required": true
+        },
+        {
+          "name": "updates",
+          "type": "string",
+          "description": "JSON object of fields to update",
+          "required": true
+        }
       ]
     },
     {
@@ -70,9 +133,28 @@
   "settings": {
     "section": "Connection",
     "fields": [
-      { "key": "jiraUrl", "label": "Jira URL", "type": "text", "description": "Your Jira instance URL", "required": true, "default": "https://your-domain.atlassian.net" },
-      { "key": "jiraEmail", "label": "Jira Email", "type": "text", "description": "Email associated with your Jira account", "required": true },
-      { "key": "jiraApiToken", "label": "Jira API Token", "type": "secret", "description": "Atlassian API token", "required": true }
+      {
+        "key": "jiraUrl",
+        "label": "Jira URL",
+        "type": "text",
+        "description": "Your Jira instance URL",
+        "required": true,
+        "default": "https://your-domain.atlassian.net"
+      },
+      {
+        "key": "jiraEmail",
+        "label": "Jira Email",
+        "type": "text",
+        "description": "Email associated with your Jira account",
+        "required": true
+      },
+      {
+        "key": "jiraApiToken",
+        "label": "Jira API Token",
+        "type": "secret",
+        "description": "Atlassian API token",
+        "required": true
+      }
     ]
   },
   "aiDisclosure": { "tools": ["Claude Code (Anthropic)"], "humanReview": true }
