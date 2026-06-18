@@ -1,6 +1,6 @@
 {
   "name": "cortex-plugin-jira",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Create/update issues, sprint planning, backlog grooming",
   "kind": "esm",
   "entryPoint": "mod.ts",
@@ -40,14 +40,24 @@
           "type": "string",
           "description": "Type of issue",
           "required": false,
-          "enum": ["bug", "task", "story", "epic"]
+          "enum": [
+            "bug",
+            "task",
+            "story",
+            "epic"
+          ]
         },
         {
           "name": "priority",
           "type": "string",
           "description": "Issue priority",
           "required": false,
-          "enum": ["low", "medium", "high", "critical"]
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
         },
         {
           "name": "assignee",
@@ -121,8 +131,18 @@
       "name": "jira_sprint_report",
       "description": "Get sprint report for a board",
       "params": [
-        { "name": "board_id", "type": "number", "description": "Board ID", "required": true },
-        { "name": "sprint_id", "type": "number", "description": "Sprint ID", "required": true }
+        {
+          "name": "board_id",
+          "type": "number",
+          "description": "Board ID",
+          "required": true
+        },
+        {
+          "name": "sprint_id",
+          "type": "number",
+          "description": "Sprint ID",
+          "required": true
+        }
       ]
     }
   ],
@@ -130,32 +150,40 @@
   "peerDependencies": {
     "cortex": ">=1.0.0"
   },
-  "settings": {
-    "section": "Connection",
-    "fields": [
-      {
-        "key": "jiraUrl",
-        "label": "Jira URL",
-        "type": "text",
-        "description": "Your Jira instance URL",
-        "required": true,
-        "default": "https://your-domain.atlassian.net"
-      },
-      {
-        "key": "jiraEmail",
-        "label": "Jira Email",
-        "type": "text",
-        "description": "Email associated with your Jira account",
-        "required": true
-      },
-      {
-        "key": "jiraApiToken",
-        "label": "Jira API Token",
-        "type": "secret",
-        "description": "Atlassian API token",
-        "required": true
-      }
-    ]
+  "aiDisclosure": {
+    "tools": [
+      "Claude Code (Anthropic)"
+    ],
+    "humanReview": true
   },
-  "aiDisclosure": { "tools": ["Claude Code (Anthropic)"], "humanReview": true }
+  "homepage": "https://github.com/CortexPrism/cortex-plugin-jira",
+  "ui": {
+    "settings": {
+      "section": "Connection",
+      "fields": [
+        {
+          "key": "jiraUrl",
+          "label": "Jira URL",
+          "type": "text",
+          "description": "Your Jira instance URL",
+          "required": true,
+          "default": "https://your-domain.atlassian.net"
+        },
+        {
+          "key": "jiraEmail",
+          "label": "Jira Email",
+          "type": "text",
+          "description": "Email associated with your Jira account",
+          "required": true
+        },
+        {
+          "key": "jiraApiToken",
+          "label": "Jira API Token",
+          "type": "secret",
+          "description": "Atlassian API token",
+          "required": true
+        }
+      ]
+    }
+  }
 }
