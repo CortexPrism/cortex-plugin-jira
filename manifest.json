@@ -1,6 +1,6 @@
 {
   "name": "cortex-plugin-jira",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Create/update issues, sprint planning, backlog grooming",
   "kind": "esm",
   "entryPoint": "mod.ts",
@@ -100,7 +100,7 @@
           "type": "number",
           "description": "Maximum results to return",
           "required": false,
-          "default": 20
+          "defaultValue": 20
         }
       ]
     },
@@ -148,7 +148,7 @@
   ],
   "dependencies": {},
   "peerDependencies": {
-    "cortex": ">=1.0.0"
+    "cortex": ">=0.51.0"
   },
   "aiDisclosure": {
     "tools": [
@@ -167,7 +167,7 @@
           "type": "text",
           "description": "Your Jira instance URL",
           "required": true,
-          "default": "https://your-domain.atlassian.net"
+          "defaultValue": "https://your-domain.atlassian.net"
         },
         {
           "key": "jiraEmail",

@@ -1,4 +1,4 @@
-import type { PluginContext, Tool, ToolCallResult, ToolContext } from './types.ts';
+import type { PluginContext, Tool, ToolCallResult } from 'cortex/plugins';
 
 let config: Record<string, string> = {};
 
@@ -65,7 +65,7 @@ const jira_create_issue: Tool = {
     ],
     capabilities: ['network:fetch'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const project_key = args.project_key;
@@ -162,7 +162,7 @@ const jira_get_issue: Tool = {
     ],
     capabilities: ['network:fetch'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const issue_key = args.issue_key;
@@ -220,7 +220,7 @@ const jira_search: Tool = {
     ],
     capabilities: ['network:fetch'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const jql = args.jql;
@@ -286,7 +286,7 @@ const jira_update_issue: Tool = {
     ],
     capabilities: ['network:fetch'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const issue_key = args.issue_key;
@@ -360,7 +360,7 @@ const jira_list_projects: Tool = {
     params: [],
     capabilities: ['network:fetch'],
   },
-  execute: async (_args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (_args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const res = await jiraApi('/project');
@@ -402,7 +402,7 @@ const jira_sprint_report: Tool = {
     ],
     capabilities: ['network:fetch'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const board_id = args.board_id;
